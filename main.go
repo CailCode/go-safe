@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"text/template"
 	"time"
+	"os"
 )
 
 // check function for nil value in form
@@ -50,7 +51,8 @@ func main() {
 	http.HandleFunc("/manager", Manager)
 
 	// LISTEN
-	http.ListenAndServe(":8080", nil)
+	port := os.Getenv("PORT")
+	http.ListenAndServe(":" + port)
 }
 
 // ** LOGIN **
