@@ -1,0 +1,152 @@
+<html>
+
+    <head>
+        <title> go-safe | Manager </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="static/css/manager.css">
+    </head>
+
+    <body>
+        <div class="over">
+
+            <!--MAKEBOX-->
+            <div class="makebox" id="makebox">
+
+                <div class="back-container">
+                     <img onclick="reset(manager,makebox)" src="/static/img/indietro.png" class="back">
+                </div>  
+                <h1>Nuova Passowrd</h1>
+                <hr>
+                <form action="/manager" method="post" id="form">
+                <input autocomplete="off" class="new" type="text" placeholder="Nome Account" name="account" id="text_account">
+
+                <div class="text">Lunghezza Password
+                    <select name="len" id="len">
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="12">12</option>
+                        <option value="16">16</option>
+                        <option value="20">20</option>
+                        <option value="22">22</option>
+                        <option value="26">26</option>
+                        <option value="30">30</option>
+                    </select>
+                </div>
+
+                <div class="text">
+                    Livello Protezione: <br><br>
+                    <input type="radio" id="alto" value="alto" name="prt"> Alto 
+                    <input type="radio" id="medio" value="medio" name="prt" checked> Medio 
+                    <input type="radio" id="basso" value="basso" name="prt"> Basso 
+                </div>
+                    <input type="text" name="password" id="text_password" style="visibility:hidden;"> <br>
+                </form>
+                <button id="crea" onclick="new_psw(len,text_password,text_account,error)"> Crea </button>
+                <div class="text" id="error"></div>
+            </div>
+
+
+            <!--MANAGER-->
+            <div class="manager" id="manager">
+
+               <h1>Go-Safe</h1>
+               <hr>
+
+               <a href="/home">
+                <img class="logout" src="static/img/logout.png">
+               </a>
+
+               <img onclick="magic(manager,makebox)" class="plus" src="static/img/button.png" alt="">
+               <div class="container">
+
+                    {{range .Range}}
+                   <div class="space">
+                       <fieldset>
+                            <legend>{{.Account}}</legend>
+                            <input id="p{{.Id}}" type="password" value="{{.Password}}">
+                       </fieldset>
+                       <div class="evenly">
+                           <img class="action" onclick="copy(p{{.Id}})" src="/static/img/copia.png">
+                           <img class="action" onclick="see(p{{.Id}})" src="/static/img/scopri.png">
+                       </div>
+                   </div> <hr>
+                   {{end}}
+
+            </div>
+            </div>
+    </div>
+
+
+    <script>
+
+        var basso = "a0b1c2d3e4f5g6h7i8k9lmnopqrstuvwxyz";
+        var medio = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+        var alto = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz!$%&()=._-[]{};:";
+
+        function rand_string(len,comp) {
+            var str = '';
+            for (var i = 0; i < len; i++) {
+                var pos = Math.floor(Math.random() * comp.length);
+                str += comp.substring(pos, pos + 1);
+            }
+            return str;
+        }
+
+
+        function new_psw(len,id,account,error){
+
+            var length = len.options[len.selectedIndex].value;
+
+            if(document.getElementById("alto").checked){
+                id.value = rand_string(length,alto);
+            }
+            else if(document.getElementById("medio").checked){
+                id.value = rand_string(length,medio);
+            }
+            else{
+                id.value = rand_string(length,basso);
+            }
+
+            if(account.value==""){
+                error.innerHTML="Error, Inserire Nome Account";
+            }
+            else{
+                document.getElementById("form").submit();
+                error.innerHTML="";  
+            }
+        }
+
+        function copy(id){
+            id.type="text";
+            id.select();
+            id.setSelectionRange(0, 99999); /*For mobile devices*/
+            document.execCommand("copy");
+            id.type="password";
+        }
+
+        function see(id){
+                if(id.type=="text"){
+                    id.type="password";
+                }
+                else{
+                    id.type="text";
+                }
+        }
+
+        function magic(box,make){
+            make.style.left="50%";
+            box.style.opacity="0";
+        }
+
+        function reset(box,make){
+            make.style.left="-50%";
+            box.style.opacity="1";
+        }
+
+
+    </script>
+
+
+    </body>
+</html>

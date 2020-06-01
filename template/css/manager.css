@@ -1,0 +1,237 @@
+
+body{
+    margin: 0px;
+    padding:0px;
+    background-image: url("/static/img/back.jpg");
+    background-position:top;
+    background-size:cover;
+    overflow: hidden;
+}
+
+.over{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    background: rgba(65, 8, 104, 0.659);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.manager{
+    width: 90%;
+    height: 90%;
+    border-radius: 14px;
+    background:rgba(255, 255, 255, 0.8);
+    position: relative;
+    display:grid;
+    transition: visibility 0.5s, opacity 0.5s;
+}
+
+.text{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size:16px;
+    color:purple;
+    padding: 10px;
+    font-weight: bold;
+}
+
+h1{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color:purple;
+    padding: 10px;
+    margin:0;
+    text-align: center;
+    letter-spacing: 3px;
+}
+
+hr{
+    width: 80%;
+    border:0.4px solid purple;
+    background-color:purple;
+}
+
+.plus{
+    width: 40px;
+    height: 40px;
+    position:absolute;
+    bottom:0;
+    right: 0;
+    margin:10px;
+    transition: 1s;
+}
+
+.plus:hover{
+    cursor: pointer;
+    transform: rotate(360deg);
+    transition: 1s;
+}
+
+.container{
+    padding:10px;
+    width: 80%;
+    height: 500px;
+    overflow:auto;
+    justify-self: center;
+}
+
+.space{
+    display: flex;
+    justify-content: space-around;
+    margin:10px 0 10px 0;
+    align-items: center;
+}
+.evenly{
+    display: flex;
+    justify-content: space-between;
+}
+
+input{
+    padding:5px;
+    font-size:16px;
+    text-align: center;
+    border:none;
+    background:transparent;
+    color:purple;
+    outline-width:0px;
+}
+
+.action{
+    width:30px;
+    height: 30px;
+    padding:5px;
+    border-radius:12px;
+}
+
+.action:hover{
+    cursor:pointer;
+    background-color: rgba(65, 8, 104, 0.2);
+    border-radius:12px;
+    transition: 0.2s;
+}
+
+fieldset{
+    padding:3px;
+    border:1px solid purple;
+    border-radius: 0 12px 12px 12px;
+    background-color:transparent;
+}
+
+legend{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-transform: uppercase;
+    font-size:12px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color:purple;
+}
+
+.makebox{
+    width:300px;
+    height: 400px;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.89);
+    top:50%;
+    left:-50%;
+    transform: translate(-50%,-50%);
+    border-radius:12px;
+    transition:0.5s;
+    z-index: 1;
+    text-align: center;
+}
+
+.back-container{
+    width:100%;
+    display: flex;
+    justify-content: left;
+    margin: 0px;
+    padding: 0px;
+}
+
+.back{
+    width:20px;
+    height: 20px;
+    text-align: left;
+}
+
+.back:hover{
+    cursor: pointer;
+}
+
+.new{
+    border:0.5px solid purple;
+    background:transparent;
+    padding:8px;
+    border-radius:0 12px 12px 12px;
+    margin:10px;
+}
+
+select{
+    color:purple;
+}
+
+#crea{
+    border: 1px solid purple;
+    background: transparent;
+    color:purple;
+    font-size:16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding:5px 10px 5px 10px;
+    transition: 0.5s;
+    outline-width:0px;
+}
+
+.logout{
+    position:absolute;
+    top:0;
+    right:0;
+    margin:10px;
+    width:30px;
+    height: 30px;
+}
+.logout:hover{
+    cursor:pointer;
+}
+
+#crea:hover{
+    cursor: pointer;
+    border-radius:12px;
+    transition: 0.5s;
+}
+
+@media screen and (max-width: 600px) {
+
+        .space{
+            display:block;
+        }
+
+        .evenly{
+            justify-content: space-evenly;
+        }
+
+        hr{
+            border:none;
+            height: 1px;
+        }
+
+}
+
+
+::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(65, 8, 104, 0.659); 
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px purple; 
+  }
