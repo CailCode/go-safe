@@ -21,9 +21,7 @@ type Vault struct {
 
 func ConnectDB() *sql.DB {
 
-	//psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+"password=%s dbname=%s sslmode=disable", host, port, user, password, database)
 	// CONNECTION TO DATABASE
-	//db, err := sql.Open("postgres", "postgres://rcotmcrvwjaehj:221680585c0f7290104c0ef1f9570ddc037df47f66020366cc5d55b4734b36f6@ec2-54-195-247-108.eu-west-1.compute.amazonaws.com:5432/defhvd4qjdihrh") //psqlInfo)
 	url, _ := os.LookupEnv("DATABASE_URL")
 	db, err := sql.Open("postgres", url)
 	Try(err)
